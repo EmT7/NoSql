@@ -1,7 +1,7 @@
 const { Thought, User } = require('../models')
 
 const thoughtController = {
-    //Create a new thought 
+    //new thought 
     addThought({ params, body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
@@ -20,7 +20,7 @@ const thoughtController = {
             })
             .catch(err => res.json(err))
     },
-    //GET all thoughts
+    //all thoughts
     getAllThoughts(req, res) {
         Thought.find({})
             .then(dbThoughts => {
@@ -28,7 +28,7 @@ const thoughtController = {
             })
             .catch(err => res.json(err))
     },
-    //GET a single thought by id
+    //single thought by id
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.thoughtId })
             .then(dbThought => {
@@ -43,7 +43,7 @@ const thoughtController = {
                 res.status(400).json(err)
             })
     },
-    //PUT to update a thought by id
+    //update a thought by id
     updateThoughtById({ params, body }, res) {
         Thought.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true, runValidators: true })
             .then(dbThought => {
@@ -58,7 +58,7 @@ const thoughtController = {
                 res.status(400).json(err);
             })
     },
-    //DELETE to remove a thought by id
+    //remove a thought by id
     removeThoughtById({ params }, res) {
         Thought.findOneAndDelete({ _id: params.thoughtId },)
             .then(deletedThought => {
@@ -84,7 +84,7 @@ const thoughtController = {
                 res.status(400).json(err);
             })
     },
-    //ADD reaction to though
+    //add reaction to thought
     addReaction({ params, body }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
@@ -103,7 +103,7 @@ const thoughtController = {
                 res.status(400).json(err)
             })
     },
-    //DELETE remove a reaction 
+    // remove a reaction 
     deleteReaction({ params }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
