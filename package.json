@@ -20,5 +20,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://https://github.com/MirandaT77/NoSql"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
