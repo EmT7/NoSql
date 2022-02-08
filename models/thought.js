@@ -10,7 +10,6 @@ const ReactionSchema = new Schema(
       reactionBody: {
         type: String,
         required: "Please choose a reaction less than 100 characters!",
-        //minlength and maxlength can be added as separate lines
         minlength: 1,
         maxlength: 100,
       },
@@ -44,7 +43,6 @@ const ReactionSchema = new Schema(
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
-        //!create a formatter file for the date
       },
       userName: {
         type: String,
