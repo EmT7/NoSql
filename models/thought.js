@@ -30,3 +30,41 @@ const ReactionSchema = new Schema(
       id: false,
     }
   );
+
+  const thoughtSchema = new Schema(
+    {
+      thoughtText: {
+        type: String,
+        required: "You must select a thought must be less than 280 characters!",
+        //minlength and maxlength can be added as separate lines
+        minlength: 1,
+        maxlength: 280,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+        //!create a formatter file for the date
+      },
+      userName: {
+        type: String,
+        required: true,
+      },
+      reactions: [ReactionSchema],
+    },
+    {
+      toJSON: {
+        virtuals: true,
+      },
+      id: false,
+    }
+  );
+
+  thoughtSchema.virtual("reactionCount").get(function () {
+    return this.reactions.length;
+  });
+  
+  // Create Comment model
+  const thought = model("thought", thoughtSchema);
+  
+  module.exports = thought;
