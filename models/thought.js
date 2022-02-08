@@ -1,4 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
+const dateFormat = require('../utils/dateFormat');
 
 const ReactionSchema = new Schema(
     {
@@ -63,5 +64,6 @@ const ReactionSchema = new Schema(
     return this.reactions.length;
   });
   const Thought = model("Thought", ThoughtSchema);
+  const Reaction = model('Reaction', ReactionSchema);
   
   module.exports = Thought;
