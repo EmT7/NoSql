@@ -2,6 +2,7 @@
 Challenge # 18 University of Oregon Bootcamp
 
 Social Network API
+![Code and Insomnia](./screenshot.png)
 
 ## User Story
 
