@@ -1,7 +1,7 @@
 const { User, Thought } = require('../models');
 
 const userController = {
-    //POST a new user
+    //new user
     addUser({ body }, res) {
         User.create(body)
             .then(dbUser => {
@@ -9,7 +9,7 @@ const userController = {
             })
             .catch(err => res.status(400).json(err));
     },
-    //GET all users 
+    //all users
     getAllUsers(req, res) {
         User.find({})
             .select('-__v')
@@ -21,7 +21,7 @@ const userController = {
                 res.status(400).json(err)
             })
     },
-    //GET a single user by its id
+    //single user
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
             .then(dbUser => {
@@ -36,7 +36,7 @@ const userController = {
                 res.status(400).json(err)
             })
     },
-    //Update a user by its _id
+    //update 
     updateUserById({ params, body }, res) {
         User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
             .then(dbUser => {
@@ -51,7 +51,7 @@ const userController = {
                 res.status(400).json(err)
             })
     },
-    //DELETE to remove user by id
+    //remove user by id
     deleteUserById({ params }, res) {
         User.findOneAndDelete({ _id: params.id })
             .then(dbUser => {
@@ -66,7 +66,7 @@ const userController = {
                 res.status(400).json(err);
             })
     },
-    //POST to add a new friend to a user's friend list
+    //add a new friend to a user's friend list
     addFriend({ params }, res) {
         User.findOneAndUpdate(
             { _id: params.userId },
@@ -85,7 +85,7 @@ const userController = {
                 res.status(404).json(err);
             })
     },
-    //DELETE to remove a friend from a user's friend list
+    //delete friend
     deleteFriend({ params }, res) {
         User.findOneAndUpdate(
             { _id: params.userId },
@@ -106,5 +106,5 @@ const userController = {
     }
 }
 
-//export userController object
+
 module.exports = userController;
