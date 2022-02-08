@@ -1,7 +1,7 @@
 # NoSql
 Challenge # 18 University of Oregon Bootcamp
 
-
+Social Network API
 
 ## User Story
 
@@ -25,5 +25,11 @@ THEN I am able to successfully create, update, and delete users and thoughts in 
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
+
+Installations:
+* npm 
+* nodemon 
+* express 
+* Mongoose 
 
 Created by: [Miranda Thompson](https://github.com/MirandaT77) [Contact me via email](ranileah7@gmail.com)
